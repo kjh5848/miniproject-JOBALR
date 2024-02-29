@@ -1,5 +1,6 @@
 package com.example.jobala._user;
 
+import com.example.jobala.photo.Photo;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,7 +26,7 @@ public class User {
     private String ceo;
     private String address;
     private Boolean role; // true -> guest, false -> comp
-    private String photo;
+    private Photo photo;
     private LocalDateTime createdAt;
 
 }
