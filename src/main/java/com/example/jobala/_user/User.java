@@ -14,7 +14,7 @@ public class User {
     private int id;
 
     @Column(unique = true, length = 15)
-    private String username; // 아아디
+    private String username; // 아아디 (이메일 주소)
     
     private String email;
     private String compNum;
@@ -27,5 +27,4 @@ public class User {
     private Boolean role; // true -> guest, false -> comp
     private String photo;
     private LocalDateTime createdAt;
-
 }
