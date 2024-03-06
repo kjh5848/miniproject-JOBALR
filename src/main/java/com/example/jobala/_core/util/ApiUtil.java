@@ -8,7 +8,7 @@ public class ApiUtil<T> {
     private Integer status ;
     private String msg ;
     private T body;
-
+A
     public ApiUtil(T body) {
         this.status = 200;
         this.msg = "성공";

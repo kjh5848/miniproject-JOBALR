@@ -16,8 +16,18 @@ public class ScrapRepository {
     private Integer id;
 
     @Transactional
+    public void saveScrap(ScrapRequest.SaveDTO reqDTO, User sessionUser) {
+        Query query = em.createNativeQuery("insert into scrap_tb(role, user_id, resume_id, jobopen_id, created_at) values(?,?,?,?,now())");
+        query.setParameter(1, sessionUser.getRole());
+        query.setParameter(2, sessionUser.getId());
+        query.setParameter(3, reqDTO.getResumeId());
+        query.setParameter(4, reqDTO.getJobopenId());
+        query.executeUpdate();
+    }
+
+    @Transactional
     public Scrap save(ScrapRequest.SaveDTO reqDTO, User sessionUser) {
-        Query query = em.createNativeQuery("insert into scrap_tb(role, user_id, resume_id, jobopen_id,created_at) values(?,?,?,?,now())");
+        Query query = em.createNativeQuery("insert into scrap_tb(role, user_id, resume_id, jobopen_id, created_at) values(?,?,?,?,now())");
         query.setParameter(1, sessionUser.getRole());
         query.setParameter(2, sessionUser.getId());
         query.setParameter(3, reqDTO.getResumeId());
@@ -32,7 +42,6 @@ public class ScrapRepository {
             return null;
         }
     }
-
 
     public ScrapResponse.DetailDTO findScrap(int resumeId) {
         String q = """
@@ -78,7 +87,6 @@ public class ScrapRepository {
 
         query.executeUpdate();
     }
-
 
 
     @Transactional

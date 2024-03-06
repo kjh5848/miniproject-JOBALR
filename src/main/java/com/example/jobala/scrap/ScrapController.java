@@ -15,7 +15,7 @@ public class ScrapController {
     private final HttpSession session;
 
     @DeleteMapping("/api/scrap/{id}")
-    public ApiUtil<?> delete(@PathVariable Integer id, HttpServletResponse response){
+    public ApiUtil<?> delete(@PathVariable Integer id, HttpServletResponse response) {
         // 1. 인증 체크
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
@@ -24,7 +24,7 @@ public class ScrapController {
         }
         // 2. 권한 체크
         Scrap scrap = scrapRepository.findById(id);
-        if(scrap.getResumeId() != sessionUser.getId()){
+        if (scrap.getResumeId() != sessionUser.getId()) {
             response.setStatus(403);
             return new ApiUtil<>(403, "권한없음");
         }
@@ -33,7 +33,7 @@ public class ScrapController {
     }
 
     @PostMapping("/api/scrap")
-    public ApiUtil<?> save(@RequestBody ScrapRequest.SaveDTO reqDTO, HttpServletResponse resp){
+    public ApiUtil<?> save(@RequestBody ScrapRequest.SaveDTO reqDTO, HttpServletResponse resp) {
         // 1. 인증 체크
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
