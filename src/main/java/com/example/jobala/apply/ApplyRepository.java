@@ -41,7 +41,7 @@ public class ApplyRepository {
         return responseDTO;
     }
 
-    public List<ApplyResponse.HireDTO> hfindAllByUserId(int compId){ // 로그인한 기업 ID
+    public List<ApplyResponse.HireDTO> findAllByUserId2(int compId){ // 로그인한 기업 ID
         String q = """
                 SELECT at.id, jot.jobopen_title, rt.resume_title, rt.name, at.state
                 FROM apply_tb at

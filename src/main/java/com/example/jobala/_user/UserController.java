@@ -3,6 +3,8 @@ package com.example.jobala._user;
 import com.example.jobala._core.util.ApiUtil;
 import com.example.jobala.jobopen.Jobopen;
 import com.example.jobala.jobopen.JobopenRepository;
+import com.example.jobala.scrap.Scrap;
+import com.example.jobala.scrap.ScrapRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 public class UserController {
     private final UserRepository userRepository;
     private final JobopenRepository jobopenRepository;
+    private final ScrapRepository scrapRepository;
 
     private final HttpSession session;
 
@@ -25,6 +28,9 @@ public class UserController {
     public String mainForm(HttpServletRequest req) {
         List<Jobopen> jobopenList = userRepository.findAll();
         req.setAttribute("jobopenList", jobopenList);
+
+        List<Scrap> scrap = scrapRepository.findByScrapAll();
+        req.setAttribute("scrap", scrap);
         return "index";
     }
 

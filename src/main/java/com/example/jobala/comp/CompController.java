@@ -35,7 +35,7 @@ public class CompController {
         //인재채용
         //req.setAttribute("scoutList", scoutList);
         // 스크랩ID
-        req.setAttribute("scrap", scrap);
+        //req.setAttribute("scrap", scrap);
         // 이력서 리스트
         req.setAttribute("resumeList", resumeList);
         return "/comp/scoutList";

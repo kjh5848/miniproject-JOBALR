@@ -77,7 +77,7 @@ public class CompRepository {
 
     public List<Jobopen> findJobopenAll() {
         String q = """
-                select * from jobopen_tb order by id desc;              
+                select * from jobopen_tb order by id desc
                 """;
         Query query = em.createNativeQuery(q, Jobopen.class);
         return query.getResultList();
@@ -93,7 +93,7 @@ public class CompRepository {
     }
 
     @Transactional
-    public void upDate() {
+    public void update() {
         return;
     }
 

@@ -55,16 +55,14 @@ values
     (5, 1, 5,'["Java","Spring","HTML","jQuery","MySQL"]');
 
 -- -- 개인이 공고를 스크랩한 더미
--- INSERT INTO SCRAP_TB(role, resume_id, jobopen_id, user_id)
+-- INSERT INTO scrap_tb(role, jobopen_id, resume_id, user_id, created_at)
 -- VALUES
---     (0,0,3,1),
---     (0,0,4,1),
---     (0,0,5,2);
+--     (0,3,1,now()),
+--     (0,4,1,now()),
+--     (0,5,2,now());
 --
 -- -- 기업이 이력서를 스크랩한 더미
--- INSERT INTO SCRAP_TB(role, resume_id, jobopen_id, user_id)
+-- INSERT INTO scrap_tb(role,jobopen_id, resume_id, user_id, created_at)
 -- VALUES
---     (1,1,0,3),
---     (1,1,0,3),
---     (1,2,0,4),
---     (1,2,0,5);
+--     (1,1,3, now()),
+--     (1,2,4, now()),

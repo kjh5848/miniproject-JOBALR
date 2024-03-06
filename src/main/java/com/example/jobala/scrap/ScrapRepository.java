@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class ScrapRepository {
@@ -15,7 +17,7 @@ public class ScrapRepository {
 
     @Transactional
     public Scrap save(ScrapRequest.SaveDTO reqDTO, User sessionUser) {
-        Query query = em.createNativeQuery("insert into scrap_tb(role, user_id, resume_id, jobopen_id) values(?,?,?,?)");
+        Query query = em.createNativeQuery("insert into scrap_tb(role, user_id, resume_id, jobopen_id,created_at) values(?,?,?,?,now())");
         query.setParameter(1, sessionUser.getRole());
         query.setParameter(2, sessionUser.getId());
         query.setParameter(3, reqDTO.getResumeId());
@@ -86,5 +88,14 @@ public class ScrapRepository {
 
     public void findAll() {
         return;
+    }
+
+    public List<Scrap> findByScrapAll() {
+        String q = """
+                select * from scrap_tb
+                """;
+
+        Query query = em.createNativeQuery(q, Scrap.class);
+        return query.getResultList();
     }
 }
