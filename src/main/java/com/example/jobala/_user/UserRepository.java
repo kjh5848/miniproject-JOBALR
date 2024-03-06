@@ -14,6 +14,7 @@ import java.util.List;
 public class UserRepository {
     private final EntityManager em;
 
+
     public List<Jobopen> findAll() {
         String q = """
                 select * from jobopen_tb order by id desc;              
@@ -93,6 +94,21 @@ public class UserRepository {
             return null;
         }
     }
+
+
+//    public List<Jobopen> findByJobopenScrap() {
+//        String q = """
+//                SELECT
+//                 j.id,
+//                 j.jobopen_title,
+//                 j.edu, j.career,
+//                 j.comp_location,
+//                 s.user_id,
+//                 s.jobopen_id
+//                 FROM jobopen_tb j join scrap_tb s on j.id = s.jobopen_id""";
+//        Query query = em.createNativeQuery(q, Jobopen.class);
+//        return query.getResultList();
+//    }
 
 
 //    public List<Jobopen> findByResumeAndScrap() {

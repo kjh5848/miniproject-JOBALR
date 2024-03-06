@@ -9,8 +9,20 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <div>
-                    <i class="fas fa-bookmark text-warning" style="font-size: 20px;"></i>
+                    <div>
+                        <hr>
+                        {{#scrap.isScrap}}-->
+                            <i id="scrap" onclick="bookmarkToggle({{id}})"
+                               class="fas fa-bookmark text-warning"></i>
+                        {{/scrap.isScrap}}
+                        {{^scrap.isScrap}}
+                            <i id="scrap" onclick="bookmarkToggle({{id}})"
+                               class="far fa-bookmark"></i>
+                        {{/scrap.isScrap}}
+                        <input type="hidden" id="scrap-id" value="{{scrap.id}}">
+                    </div>
                     <p class="card-title">회사명</p>
+                    
                     <h2>{{jobopen.jobopenTitle}}</h2>
                 </div>
             </div>
@@ -238,5 +250,48 @@
     <!-- 버튼으로 넘겨서 보기 -->
 </div>
 
+<script>
+    function bookmarkToggle(id) {
+        console.log(id)
+        // 좋아요 하기
+        if ($("#scrap").hasClass("far")) {
+            let scrap = {
+                id: id
+            }
+            console.log(id)
+            $.ajax({
+                url: "/api/scrap",
+                type: "post",
+                data: JSON.stringify(scrap),
+                contentType: "application/json; charset=utf-8"
+            }).done((res) => {
+                console.log(res);
+                $("#scrap").removeClass("far");
+                $("#scrap").addClass("text-warning");
+                $("#scrap").addClass("fas");
+                // 좋아요가 되면 love id를 변경해야함
+                $("#scrap-id").val(res.body.id);
+            }).fail((res) => {
+                alert(res.responseJSON.msg);
+            });
+        } else { // 스크랩 취소 하기
+            let scrapId = $("#scrap-id").val();
+            $.ajax({
+                url: "/api/scrap/" + scrapId,
+                type: "delete"
+            }).done((res) => {
+                console.log(res);
+                $("#scrap").removeClass("fas");
+                $("#scrap").removeClass("text-warning");
+                $("#scrap").addClass("far");
+
+                // 스크랩 취소되면 scrap-id 초기화
+                $("#scrap-id").val(0);
+            }).fail((res) => {
+                alert(res.responseJSON.msg);
+            });
+        }
+    }
+</script>
 
 {{> layout/footer}}

@@ -9,6 +9,7 @@ public class ScrapResponse {
     @Data
     public static class DetailDTO {
         private Integer id;
+        private Long scrapCount;
         private Boolean isScrap;
     }
 }

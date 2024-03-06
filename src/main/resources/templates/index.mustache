@@ -74,29 +74,17 @@
 
                 </div>
                 {{#jobopenList}}
-                    <div class="card col-3 border-2" style="width: 400px;">
-                        <img src="/image/jobaralogo.png" class="card-img-top" style="width:100%">
-                        <div class="card-body text-start">
-                            <br>
-                            <a href="/comp/jobopen/{{id}}" class="btn">
+                    <a href="/comp/jobopen/{{id}}" class="btn">
+                        <div class="card col-3 border-2" style="width: 400px;">
+                            <img src="/image/jobaralogo.png" class="card-img-top" style="width:100%">
+                            <div class="card-body text-start">
+                                <br>
                                 <h5 class="card-title">{{jobopenTitle}}</h5>
-                            </a>
-                            <p class="card-text">{{compLocation}} / {{edu}} / {{career}}</p>
-                            <div>
                                 <hr>
-                                {{#scrap.isScrap}}-->
-                                    <i id="scrap" onclick="bookmarkToggle({{id}})"
-                                       class="fas fa-bookmark text-warning"></i>
-                                {{/scrap.isScrap}}
-                                {{^scrap.isScrap}}
-                                    <i id="scrap" onclick="bookmarkToggle({{id}})"
-                                       class="far fa-bookmark"></i>
-                                {{/scrap.isScrap}}
-                                <input type="hidden" id="id" value="{{id}}">
+                                <p class="card-text">{{compLocation}} / {{edu}} / {{career}}</p>
                             </div>
-                            <hr>
                         </div>
-                    </div>
+                    </a>
                 {{/jobopenList}}
 
 
@@ -105,49 +93,7 @@
     </div>
     <!-- 채용 공고 end -->
 </div>
-<script>
-    function bookmarkToggle(id) {
-        console.log(id)
-        // 좋아요 하기
-        if ($("#scrap").hasClass("far")) {
-            let scrap = {
-                id: id
-            }
-            console.log(id)
-            $.ajax({
-                url: "/api/scrap",
-                type: "post",
-                data: JSON.stringify(scrap),
-                contentType: "application/json; charset=utf-8"
-            }).done((res) => {
-                console.log(res);
-                $("#scrap").removeClass("far");
-                $("#scrap").addClass("text-warning");
-                $("#scrap").addClass("fas");
-                // 좋아요가 되면 love id를 변경해야함
-                $("#scrap-id").val(res.body.id);
-            }).fail((res) => {
-                alert(res.responseJSON.msg);
-            });
-        } else { // 스크랩 취소 하기
-            let scrapId = $("#scrap-id").val();
-            $.ajax({
-                url: "/api/scrap/" + scrapId,
-                type: "delete"
-            }).done((res) => {
-                console.log(res);
-                $("#scrap").removeClass("fas");
-                $("#scrap").removeClass("text-warning");
-                $("#scrap").addClass("far");
 
-                // 스크랩 취소되면 scrap-id 초기화
-                $("#scrap-id").val(0);
-            }).fail((res) => {
-                alert(res.responseJSON.msg);
-            });
-        }
-    }
-</script>
 
 
 {{> layout/footer}}

@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-
 @Table(name = "scrap_tb", uniqueConstraints = {
         @UniqueConstraint(
                 name = "scrap_uk",

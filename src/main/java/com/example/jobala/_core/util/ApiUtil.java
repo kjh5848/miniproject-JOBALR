@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class ApiUtil<T> {
 
-    private Integer status ;
-    private String msg ;
+    private Integer status;
+    private String msg;
     private T body;
-A
+
     public ApiUtil(T body) {
         this.status = 200;
         this.msg = "성공";
@@ -18,6 +18,6 @@ A
     public ApiUtil(Integer status, String msg) {
         this.status = status;
         this.msg = msg;
-        this.body = null ;
+        this.body = null;
     }
 }

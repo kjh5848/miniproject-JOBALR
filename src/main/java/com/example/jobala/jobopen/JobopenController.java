@@ -3,6 +3,8 @@ package com.example.jobala.jobopen;
 import com.example.jobala._user.User;
 import com.example.jobala.guest.GuestRepository;
 import com.example.jobala.resume.Resume;
+import com.example.jobala.scrap.ScrapRepository;
+import com.example.jobala.scrap.ScrapResponse;
 import com.example.jobala.skill.Skill;
 import com.example.jobala.skill.SkillRepository;
 import com.google.gson.Gson;
@@ -25,6 +27,7 @@ public class JobopenController {
     private final JobopenRepository jobopenRepository;
     private final SkillRepository skillRepository;
     private final GuestRepository guestRepository;
+    private final ScrapRepository scrapRepository;
 
     private final HttpSession session;
 
@@ -66,6 +69,7 @@ public class JobopenController {
 
     @GetMapping("/comp/jobopen/{id}")
     public String detailForm(@PathVariable int id, HttpServletRequest req) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
 
         Jobopen jobopen = jobopenRepository.findByIdWithUser(id);
 
@@ -74,7 +78,8 @@ public class JobopenController {
         String json = skills.getName();
         // JSON -> List
         Gson gson = new Gson();
-        Type type = new TypeToken<List<String>>() {}.getType();
+        Type type = new TypeToken<List<String>>() {
+        }.getType();
         List<String> skillsList = gson.fromJson(json, type);
         System.out.println("다시 바꾼 결과 = " + skillsList);
         req.setAttribute("skillsList", skillsList);
@@ -85,6 +90,14 @@ public class JobopenController {
         req.setAttribute("jobopen", jobopen);
         req.setAttribute("resumeList", resumeList);
 
+
+        if (sessionUser == null) {
+            ScrapResponse.DetailDTO respDTO = scrapRepository.findScrap(id);
+            req.setAttribute("scrap", respDTO);
+        } else {
+            ScrapResponse.DetailDTO respDTO = scrapRepository.findScrap(id, sessionUser.getId());
+            req.setAttribute("scrap", respDTO);
+        }
 
         return "/comp/jobopen/detailForm";
     }

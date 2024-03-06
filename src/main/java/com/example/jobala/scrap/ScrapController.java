@@ -34,6 +34,7 @@ public class ScrapController {
 
     @PostMapping("/api/scrap")
     public ApiUtil<?> save(@RequestBody ScrapRequest.SaveDTO reqDTO, HttpServletResponse resp) {
+
         // 1. 인증 체크
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {

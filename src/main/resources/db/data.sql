@@ -50,13 +50,16 @@ values (1, 1, 3, '["Java","JavaScript"]'),
        (4, 1, 5, '["JavaScript","jQuery"]'),
        (5, 1, 5, '["Java","Spring","HTML","jQuery","MySQL"]');
 
--- 개인이 공고를 스크랩한 더미
-INSERT INTO scrap_tb(role, jobopen_id, user_id, created_at)
-VALUES (0, 3, 1, now()),
-       (0, 4, 1, now()),
-       (0, 5, 2, now());
+-- 개인이 공고를 선택한 더미
+Insert Into scrap_tb(user_id, jobopen_id, role, create_at)
+values (1, 1, 0, now()),
+       (1, 2, 0, now()),
+       (2, 3, 0, now()),
+       (2, 4, 0, now());
 
--- 기업이 이력서를 스크랩한 더미
-INSERT INTO scrap_tb(role, resume_id, user_id, created_at)
-VALUES (1, 1, 3, now()),
-       (1, 2, 4, now());
+-- 기업이 이력서를 선택한 더미
+Insert Into scrap_tb(user_id, resume_id, role, create_at)
+values (3, 1, 1, now()),
+       (3, 2, 1, now()),
+       (4, 3, 1, now()),
+       (5, 1, 1, now());
