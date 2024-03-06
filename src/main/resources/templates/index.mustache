@@ -71,25 +71,31 @@
         <div class="d-flex">
             <div>
                 {{#jobopenList}}
-                    <a href="/comp/jobopen/{{id}}" class="btn">
+                    <form href="/comp/jobopen/{{id}}" class="btn">
                         <div class="card col-3 border-2" style="width: 400px;">
                             <img src="/image/jobaralogo.png" class="card-img-top" style="width:100%">
                             <div class="card-body text-start">
                                 <br>
                                 <h5 class="card-title">{{jobopenTitle}}</h5>
+                                <div>
+                                    <button class="far fa-bookmark text-warning" onclick="toggleHeart({{id}})">
+                                    </button>
+                                </div>
                                 <hr>
                                 <p class="card-text">{{compLocation}} {{career}} {{edu}}</p>
                             </div>
                         </div>
-                    </a>
+                    </form>
                 {{/jobopenList}}
-
-
             </div>
         </div>
     </div>
     <!-- 채용 공고 end -->
 </div>
+
+<script>
+
+</script>
 
 
 
