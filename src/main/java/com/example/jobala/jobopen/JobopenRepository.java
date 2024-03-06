@@ -116,7 +116,9 @@ public class JobopenRepository {
     @Transactional
     public void update(Jobopen jobopenId, JobopenRequest.UpdateDTO reqDTO) {
         String a = """
-                update jobopen_tb set compname = ? ,jobopenTitle=? , career=?, edu=?, jobType=?,salary=?,compLocation=?,content=? ,skills =? where id=?
+                update jobopen_tb 
+                set compname = ? ,jobopenTitle=? , career=?, edu=?,
+                jobType=?,salary=?,compLocation=?,content=?  where id=?
                 """;
         Query query = em.createNativeQuery(a);
         query.setParameter(1, reqDTO.getCompname());
@@ -127,8 +129,7 @@ public class JobopenRepository {
         query.setParameter(6, reqDTO.getSalary());
         query.setParameter(7, reqDTO.getCompLocation());
         query.setParameter(8, reqDTO.getContent());
-        query.setParameter(9, reqDTO.getSkills());
-        query.setParameter(10, jobopenId);
+        query.setParameter(9, jobopenId);
         query.executeUpdate();
     }
 

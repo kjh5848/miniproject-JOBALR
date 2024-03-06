@@ -54,3 +54,17 @@ values
     (4, 1, 5,'["JavaScript","jQuery"]'),
     (5, 1, 5,'["Java","Spring","HTML","jQuery","MySQL"]');
 
+-- -- 개인이 공고를 스크랩한 더미
+-- INSERT INTO SCRAP_TB(role, resume_id, jobopen_id, user_id)
+-- VALUES
+--     (0,0,3,1),
+--     (0,0,4,1),
+--     (0,0,5,2);
+--
+-- -- 기업이 이력서를 스크랩한 더미
+-- INSERT INTO SCRAP_TB(role, resume_id, jobopen_id, user_id)
+-- VALUES
+--     (1,1,0,3),
+--     (1,1,0,3),
+--     (1,2,0,4),
+--     (1,2,0,5);

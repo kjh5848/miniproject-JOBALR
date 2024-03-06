@@ -5,9 +5,10 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+
+@Table(name = "scrap_tb")
 @Entity
 @Data
-@Table(name = "scrap_tb")
 public class Scrap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,20 +1,17 @@
 package com.example.jobala.comp;
 
 
-import com.example.jobala.apply.ApplyRequest;
-import com.example.jobala.apply.ApplyResponse;
 import com.example.jobala._user.User;
 import com.example.jobala.jobopen.Jobopen;
 import com.example.jobala.resume.Resume;
+import com.example.jobala.scrap.Scrap;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jdk.swing.interop.SwingInterOpUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +28,15 @@ public class CompController {
 
     @GetMapping("/comp/scoutList")
     public String scoutList(HttpServletRequest req){
-//        List<CompResponse.ScoutListDTO> scoutList = compRepository.scoutList();
-//        req.setAttribute("scoutList", scoutList);
-        List<Resume> resumeList = compRepository.findResumeAll();
+        //List<CompResponse.ScoutListDTO> scoutList = compRepository.scoutList();
+        List<Scrap> scrap = compRepository.findByScrapAll();
+        List<Resume> resumeList = compRepository.findByResumeAll();
+
+        //인재채용
+        //req.setAttribute("scoutList", scoutList);
+        // 스크랩ID
+        req.setAttribute("scrap", scrap);
+        // 이력서 리스트
         req.setAttribute("resumeList", resumeList);
         return "/comp/scoutList";
     }
@@ -42,7 +45,6 @@ public class CompController {
     public String scoutDetail(@PathVariable int id, HttpServletRequest req){
         //1. 기업 정보 꺼내오기 (인증 체크)
         User sessionUser = (User) session.getAttribute("sessionUser");
-
         //2. 인재 명단에서 인재 클릭 시 이력서로 들어가지는 로직 짜기
         Resume resume = compRepository.findResumeById(id);
 
@@ -63,6 +65,7 @@ public class CompController {
     public String profileForm() {
         return "/comp/_myPage/profileForm";
     }
+
 
     @GetMapping("/detail")
     public String getApplicantList(HttpServletRequest request) {
