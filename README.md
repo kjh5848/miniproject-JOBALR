@@ -14,7 +14,7 @@
 
 > ## 기술 스택
 <span>
- <h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" width=30" /> 내가 지금 배우는 ...</h3>
+ <h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" width=30" /> 사용한 기술 스택</h3>
 <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
 <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"/>
@@ -33,7 +33,7 @@
  <br>
   <br>
   <span>
- <h3>💻 내가 지금까지 사용해본 ...</h3>
+ <h3>💻 사용한 Tools</h3>
 <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white"/>
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/>
 </span>
@@ -56,8 +56,8 @@
     - ㅇ
 
 - 송민경
-    - ㅇ
- 
+    - 기업, 구직자 사진 업로드 및 수정, 뷰에 적용하기
+    - 기업, 구직자 자유게시판 댓글 작성하기
 - 장유진
     - ㅇ
  
@@ -80,7 +80,9 @@
     ㅇ
 
 - 송민경
-    ㅇ
+  처음 협업을 하면서 git에 올린 코드들이 이전으로 돌아가는 부분을 보고 힘들어질뻔했지만 좋은 조원들을 만나서 함께 격려하면서 열심히할 수 있었습니다.
+
+
 
 - 장유진
     ㅇ
