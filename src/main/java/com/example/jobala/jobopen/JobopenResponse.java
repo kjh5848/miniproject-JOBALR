@@ -48,7 +48,7 @@ public class JobopenResponse {
             this.jobType = jobopen.getJobType();
             this.salary = jobopen.getSalary();
             this.endTime = jobopen.getEndTime();
-            this.createdAt = jobopen.getCreatedAt();
+//            DEL : this.createdAt = jobopen.getCreatedAt();
             this.role = jobopen.getRole();
         }
     }

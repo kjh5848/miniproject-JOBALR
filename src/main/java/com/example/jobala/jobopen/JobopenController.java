@@ -10,6 +10,7 @@ import com.example.jobala.scrap.Scrap;
 import com.example.jobala.scrap.ScrapRepository;
 import com.example.jobala.skill.Skill;
 import com.example.jobala.skill.SkillRepository;
+import com.example.jobala.skill.SkillRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import jakarta.servlet.http.HttpServletRequest;
@@ -76,12 +77,13 @@ public class JobopenController {
     }
 
     @PostMapping("/comp/jobopen/save")
-    public String jobopenSave(JobopenRequest.SaveDTO reqDTO) {
+    public String save(JobopenRequest.SaveDTO reqDTO) {
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) {
+
             return "redirect:/loginForm";
         }
-        jobopenRepository.save(reqDTO, sessionUser);
+        jobopenRepository.save(reqDTO.toEntity(), sessionUser);
         return "redirect:/comp/mngForm";
     }
 
